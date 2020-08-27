@@ -89,7 +89,7 @@ test:
 production:
   shard_1:
     <<: *default
-    database: milltown_s1_prod
+    database: <%= ENV['DATABASE_URL'] %>
   shard_2:
     <<: *default
-    database: milltown_s2_prod
+    database: <%= ENV['HEROKU_POSTGRESQL_PUCE'] %> 
