@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+%i[shard_1 shard_2].each do |app_host|
+  ActiveRecord::Base.connected_to(shard: app_host) do
+    Person.create!(name: "Person 1 #{app_host.to_s.humanize}")
+    Person.create!(name: "Person 2 #{app_host.to_s.humanize}")
+    Person.create!(name: "Person 3 #{app_host.to_s.humanize}")
+    Person.create!(name: "Person 4 #{app_host.to_s.humanize}")
+  end
+end
