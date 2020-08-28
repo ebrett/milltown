@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  around_action :wrap_database_connection
+  # around_action :wrap_database_connection
 
 
   private
